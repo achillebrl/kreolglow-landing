@@ -1,14 +1,17 @@
+import Image from 'next/image'
+
 export function Nav() {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-bg/95 backdrop-blur-sm border-b border-brand-primary/10">
       <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-        {/* Text logo: "KRÉOL" in heading font + "Glow" in script */}
-        <div className="flex items-baseline gap-1">
-          <span className="font-heading font-bold text-xl text-brand-primary tracking-wide">
-            KRÉOL
-          </span>
-          <span className="font-script text-2xl text-brand-accent">Glow</span>
-        </div>
+        <Image
+          src="/logo.png"
+          alt="KRÉOL GLOW"
+          width={120}
+          height={40}
+          className="h-9 w-auto object-contain"
+          priority
+        />
 
         {/* Instagram link */}
         <a

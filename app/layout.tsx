@@ -24,11 +24,16 @@ const dancing = Dancing_Script({
 export const metadata: Metadata = {
   title: 'KRÉOL GLOW — La beauté péï, livrée chez ou',
   description: 'Kits beauté & accessoires capillaires pour femmes réunionnaises. Livraison 974 J+1-2. Rejoins la liste pour -20% à l\'ouverture.',
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
   openGraph: {
     title: 'KRÉOL GLOW — La beauté péï, livrée chez ou',
     description: 'Kits beauté & accessoires capillaires pour femmes réunionnaises. Livraison 974 J+1-2.',
     locale: 'fr_RE',
     type: 'website',
+    images: ['/logo.png'],
   },
 }
 

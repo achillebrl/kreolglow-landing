@@ -1,6 +1,5 @@
 import { Nav } from '@/components/Nav'
-import { Hero } from '@/components/Hero'
-import { PacksSection } from '@/components/PacksSection'
+import { HeroWithForm } from '@/components/HeroWithForm'
 import { ProofSection } from '@/components/ProofSection'
 import { Footer } from '@/components/Footer'
 
@@ -11,8 +10,7 @@ export default function HomePage() {
     <>
       <Nav />
       <main>
-        <Hero launchDate={launchDate} />
-        <PacksSection />
+        <HeroWithForm launchDate={launchDate} />
         <ProofSection />
       </main>
       <Footer />

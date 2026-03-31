@@ -13,8 +13,6 @@ const schema = z.object({
   fbc: z.string().optional(),
 })
 
-const resend = new Resend(process.env.RESEND_API_KEY)
-
 export async function POST(request: Request) {
   const body = await request.json()
   const parsed = schema.safeParse(body)
@@ -72,8 +70,9 @@ export async function POST(request: Request) {
     eventSourceUrl: referer,
   }).catch((err) => console.error('CAPI error:', err))
 
-  // Send confirmation email — non-blocking
-  if (data.email) {
+  // Send confirmation email — lazy init, non-blocking
+  if (data.email && process.env.RESEND_API_KEY) {
+    const resend = new Resend(process.env.RESEND_API_KEY)
     resend.emails.send({
       from: 'KRÉOL GLOW <hello@kreolglow.re>',
       to: data.email,
