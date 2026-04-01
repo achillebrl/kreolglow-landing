@@ -175,17 +175,24 @@ export function WaitlistForm({ preSelectedPack }: WaitlistFormProps) {
         />
 
         <Input
-          label="Ton WhatsApp *"
+          label="Ton numéro de téléphone *"
           type="tel"
-          placeholder="+262 692 00 00 00"
+          placeholder="692 00 00 00"
           autoComplete="tel"
           hint="On ne t'enverra que des infos importantes, promis 💚"
           error={errors.whatsapp?.message}
-          {...register('whatsapp')}
+          {...register('whatsapp', {
+            setValueAs: (v: string) => {
+              const digits = v.replace(/\s/g, '')
+              if (digits.startsWith('+')) return digits
+              if (digits.startsWith('0')) return '+262' + digits.slice(1)
+              return '+262' + digits
+            },
+          })}
         />
 
         <Input
-          label="Ton email (optionnel)"
+          label="Ton email"
           type="email"
           placeholder="marie@example.com"
           autoComplete="email"
