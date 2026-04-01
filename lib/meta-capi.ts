@@ -21,6 +21,7 @@ interface CAPIPayload {
   fbc?: string | null
   clientUserAgent?: string | null
   eventSourceUrl: string
+  eventId?: string
 }
 
 export async function sendCompleteRegistration(payload: CAPIPayload): Promise<void> {
@@ -39,16 +40,17 @@ export async function sendCompleteRegistration(payload: CAPIPayload): Promise<vo
 
   const testEventCode = process.env.META_CAPI_TEST_EVENT_CODE
 
+  const event: Record<string, unknown> = {
+    event_name: 'CompleteRegistration',
+    event_time: Math.floor(Date.now() / 1000),
+    action_source: 'website',
+    event_source_url: payload.eventSourceUrl,
+    user_data: userData,
+  }
+  if (payload.eventId) event.event_id = payload.eventId
+
   const body: Record<string, unknown> = {
-    data: [
-      {
-        event_name: 'CompleteRegistration',
-        event_time: Math.floor(Date.now() / 1000),
-        action_source: 'website',
-        event_source_url: payload.eventSourceUrl,
-        user_data: userData,
-      },
-    ],
+    data: [event],
   }
   if (testEventCode) body.test_event_code = testEventCode
 

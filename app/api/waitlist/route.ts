@@ -10,6 +10,8 @@ const schema = z.object({
   // Meta CAPI cookies (optional, sent from browser)
   fbp: z.string().optional(),
   fbc: z.string().optional(),
+  // Deduplication event ID shared with browser Pixel call
+  event_id: z.string().optional(),
 })
 
 export async function POST(request: Request) {
@@ -67,6 +69,7 @@ export async function POST(request: Request) {
     fbc: data.fbc,
     clientUserAgent: userAgent,
     eventSourceUrl: referer,
+    eventId: data.event_id,
   }).catch((err) => console.error('CAPI error:', err))
 
   // Fire n8n webhook — non-blocking (email + SMS handled by n8n)

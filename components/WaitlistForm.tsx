@@ -59,10 +59,13 @@ export function WaitlistForm({ preSelectedPack }: WaitlistFormProps) {
       const fbp = getCookie('_fbp')
       const fbc = getCookie('_fbc')
 
+      // Shared event ID for Pixel ↔ CAPI deduplication
+      const eventId = crypto.randomUUID()
+
       const res = await fetch('/api/waitlist', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ ...data, fbp, fbc }),
+        body: JSON.stringify({ ...data, fbp, fbc, event_id: eventId }),
       })
       const json = (await res.json()) as { error?: string; success?: boolean }
       if (!res.ok) {
@@ -75,13 +78,14 @@ export function WaitlistForm({ preSelectedPack }: WaitlistFormProps) {
         return
       }
       setStatus('success')
-      // Fire Meta Pixel CompleteRegistration (browser)
+      // Fire Meta Pixel CompleteRegistration (browser) — same event_id as CAPI for deduplication
       if (typeof window !== 'undefined' && (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq) {
-        (window as unknown as { fbq: (...args: unknown[]) => void }).fbq('track', 'CompleteRegistration', {
-          content_name: data.pack_interest,
-          currency: 'EUR',
-          value: 0,
-        })
+        (window as unknown as { fbq: (...args: unknown[]) => void }).fbq(
+          'track',
+          'CompleteRegistration',
+          { content_name: data.pack_interest, currency: 'EUR', value: 0 },
+          { eventID: eventId }
+        )
       }
     } catch {
       setErrorMessage('Pas de connexion. Vérifie ta connexion internet et réessaie.')
