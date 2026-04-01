@@ -37,7 +37,9 @@ export async function sendCompleteRegistration(payload: CAPIPayload): Promise<vo
   if (payload.fbc) userData.fbc = payload.fbc
   if (payload.clientUserAgent) userData.client_user_agent = payload.clientUserAgent
 
-  const body = {
+  const testEventCode = process.env.META_CAPI_TEST_EVENT_CODE
+
+  const body: Record<string, unknown> = {
     data: [
       {
         event_name: 'CompleteRegistration',
@@ -48,6 +50,7 @@ export async function sendCompleteRegistration(payload: CAPIPayload): Promise<vo
       },
     ],
   }
+  if (testEventCode) body.test_event_code = testEventCode
 
   try {
     const res = await fetch(
