@@ -7,7 +7,7 @@ import { PACKS } from '@/lib/packs'
 import { WaitlistForm } from './WaitlistForm'
 
 export function PacksSection() {
-  const [selectedPack, setSelectedPack] = useState<PackId>('domin')
+  const [selectedPack, setSelectedPack] = useState<PackId>('nuit')
   const [expandedPack, setExpandedPack] = useState<PackId | null>(null)
 
   return (

@@ -2,7 +2,7 @@ import type { Pack } from './types'
 
 export const PACKS: Pack[] = [
   {
-    id: 'domin',
+    id: 'nuit',
     name: 'Kit Nuit',
     subtitle: 'La routine nuit',
     emoji: '🌙',
@@ -21,7 +21,7 @@ export const PACKS: Pack[] = [
     costPrice: 3.75,
   },
   {
-    id: 'soley',
+    id: 'jour',
     name: 'Kit Jour',
     subtitle: 'Les essentiels du jour',
     emoji: '✨',

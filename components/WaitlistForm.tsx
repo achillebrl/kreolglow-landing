@@ -14,7 +14,7 @@ const schema = z.object({
   first_name: z.string().min(2),
   whatsapp: z.string().min(8),
   email: z.union([z.email(), z.literal('')]).optional(),
-  pack_interest: z.enum(['domin', 'soley', 'complet']),
+  pack_interest: z.enum(['nuit', 'jour', 'complet']),
 })
 
 type FormData = z.infer<typeof schema>

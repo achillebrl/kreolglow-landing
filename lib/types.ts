@@ -1,4 +1,4 @@
-export type PackId = 'domin' | 'soley' | 'complet'
+export type PackId = 'nuit' | 'jour' | 'complet'
 
 export interface Pack {
   id: PackId
