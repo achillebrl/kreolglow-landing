@@ -75,6 +75,14 @@ export function WaitlistForm({ preSelectedPack }: WaitlistFormProps) {
         return
       }
       setStatus('success')
+      // Fire Meta Pixel CompleteRegistration (browser)
+      if (typeof window !== 'undefined' && (window as unknown as { fbq?: (...args: unknown[]) => void }).fbq) {
+        (window as unknown as { fbq: (...args: unknown[]) => void }).fbq('track', 'CompleteRegistration', {
+          content_name: data.pack_interest,
+          currency: 'EUR',
+          value: 0,
+        })
+      }
     } catch {
       setErrorMessage('Pas de connexion. Vérifie ta connexion internet et réessaie.')
       setStatus('error')
