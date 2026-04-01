@@ -72,8 +72,8 @@ export async function POST(request: Request) {
     eventId: data.event_id,
   }).catch((err) => console.error('CAPI error:', err))
 
-  // Fire n8n webhook — non-blocking (email + SMS handled by n8n)
-  fetch('https://n8n.aieliteacacemy.com/webhook/kreolglow', {
+  // Fire n8n webhook — awaited so Vercel doesn't kill it before it sends
+  await fetch('https://n8n.aieliteacacemy.com/webhook/kreolglow', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
