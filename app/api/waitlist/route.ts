@@ -73,7 +73,7 @@ export async function POST(request: Request) {
   }).catch((err) => console.error('CAPI error:', err))
 
   // Fire n8n webhook — non-blocking (email + SMS handled by n8n)
-  fetch('https://n8n.aieliteacacemy.com/webhook/kreolglow', {
+  fetch('https://n8n.aieliteacademy.com/webhook/kreolglow', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify({
