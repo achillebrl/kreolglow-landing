@@ -109,7 +109,7 @@ export function WaitlistForm({ preSelectedPack }: WaitlistFormProps) {
         </motion.div>
 
         <h3 className="font-heading text-2xl font-bold text-brand-text mb-2">
-          Yé ! Tu es inscrite 🎉
+          Tu es inscrite ! 🌺
         </h3>
         <p className="text-brand-muted mb-6">
           On te prévient en avant-première dès l&apos;ouverture.
@@ -174,22 +174,27 @@ export function WaitlistForm({ preSelectedPack }: WaitlistFormProps) {
           {...register('first_name')}
         />
 
-        <Input
-          label="Ton numéro de téléphone *"
-          type="tel"
-          placeholder="692 00 00 00"
-          autoComplete="tel"
-          hint="On ne t'enverra que des infos importantes, promis 💚"
-          error={errors.whatsapp?.message}
-          {...register('whatsapp', {
-            setValueAs: (v: string) => {
-              const digits = v.replace(/\s/g, '')
-              if (digits.startsWith('+')) return digits
-              if (digits.startsWith('0')) return '+262' + digits.slice(1)
-              return '+262' + digits
-            },
-          })}
-        />
+        <div className="flex flex-col gap-1">
+          <label className="text-sm font-medium text-brand-text">Ton numéro de téléphone *</label>
+          <div className={`flex items-center border rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-brand-primary ${errors.whatsapp ? 'border-red-400' : 'border-gray-200'}`}>
+            <span className="px-3 py-3 bg-gray-50 text-brand-muted text-sm font-medium border-r border-gray-200 select-none">+262</span>
+            <input
+              type="tel"
+              placeholder="692 00 00 00"
+              autoComplete="tel"
+              className="flex-1 px-3 py-3 text-sm text-brand-text bg-white outline-none min-h-[48px]"
+              {...register('whatsapp', {
+                setValueAs: (v: string) => {
+                  const digits = v.replace(/\s/g, '')
+                  if (digits.startsWith('+')) return digits
+                  return '+262' + digits
+                },
+              })}
+            />
+          </div>
+          <p className="text-xs text-brand-muted">On ne t&apos;enverra que des infos importantes, promis 💚</p>
+          {errors.whatsapp && <p className="text-xs text-red-500">{errors.whatsapp.message}</p>}
+        </div>
 
         <Input
           label="Ton email"
