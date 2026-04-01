@@ -1,14 +1,18 @@
-export type PackId = 'nuit' | 'glam' | 'routine'
+export type PackId = 'domin' | 'soley' | 'complet'
 
 export interface Pack {
   id: PackId
   name: string
+  subtitle: string
   emoji: string
   price: number
   priceDisplay: string
   tag: string
   tagColor: string
+  shortDesc: string
+  longDesc: string
   items: readonly string[]
+  image: string
   costPrice: number
 }
 

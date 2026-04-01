@@ -48,17 +48,17 @@ export function Countdown({ targetDate }: CountdownProps) {
 
   return (
     <div
-      className="flex gap-3 justify-center"
+      className="flex gap-3"
       aria-label="Compte à rebours jusqu'au lancement"
     >
       {units.map(({ value, label }) => (
         <div key={label} className="flex flex-col items-center min-w-[56px]">
-          <div className="bg-brand-bg-dark text-white rounded-xl w-14 h-14 flex items-center justify-center">
+          <div className="bg-white/15 backdrop-blur-sm border border-white/20 text-white rounded-xl w-14 h-14 flex items-center justify-center">
             <span className="font-heading text-xl font-bold tabular-nums">
               {String(value).padStart(2, '0')}
             </span>
           </div>
-          <span className="text-[10px] text-brand-muted mt-1 uppercase tracking-wider">
+          <span className="text-[10px] text-white/60 mt-1 uppercase tracking-wider">
             {label}
           </span>
         </div>

@@ -1,5 +1,10 @@
+import { Marquee } from '@/components/Marquee'
 import { Nav } from '@/components/Nav'
-import { HeroWithForm } from '@/components/HeroWithForm'
+import { Hero } from '@/components/Hero'
+import { FeaturesRow } from '@/components/FeaturesRow'
+import { PacksSection } from '@/components/PacksSection'
+import { BrandStory } from '@/components/BrandStory'
+import { LifestyleSection } from '@/components/LifestyleSection'
 import { ProofSection } from '@/components/ProofSection'
 import { Footer } from '@/components/Footer'
 
@@ -8,9 +13,14 @@ export default function HomePage() {
 
   return (
     <>
+      <Marquee />
       <Nav />
       <main>
-        <HeroWithForm launchDate={launchDate} />
+        <Hero launchDate={launchDate} />
+        <FeaturesRow />
+        <PacksSection />
+        <LifestyleSection />
+        <BrandStory />
         <ProofSection />
       </main>
       <Footer />

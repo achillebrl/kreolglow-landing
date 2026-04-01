@@ -14,7 +14,7 @@ const schema = z.object({
   first_name: z.string().min(2),
   whatsapp: z.string().min(8),
   email: z.union([z.email(), z.literal('')]).optional(),
-  pack_interest: z.enum(['nuit', 'glam', 'routine']),
+  pack_interest: z.enum(['domin', 'soley', 'complet']),
 })
 
 type FormData = z.infer<typeof schema>
@@ -88,7 +88,7 @@ export function WaitlistForm({ preSelectedPack }: WaitlistFormProps) {
   }
 
   const whatsappShareUrl = `https://wa.me/?text=${encodeURIComponent(
-    "J'ai rejoint Kréol Glow, la première boutique beauté péï avec livraison en 974 ! 🌺 Rejoins-moi : https://kreolglow.re"
+    "J'ai rejoint Kréol Glow, la première boutique beauté péï avec livraison à La Réunion ! 🌺 Rejoins-moi : https://kreolglow.re"
   )}`
 
   if (status === 'success') {

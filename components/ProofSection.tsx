@@ -1,7 +1,7 @@
 export function ProofSection() {
   const groups = [
     { name: 'Beaute Reunion', members: '45k membres' },
-    { name: 'Mode & Style 974', members: '32k membres' },
+    { name: 'Mode & Style Réunion', members: '32k membres' },
     { name: 'Mamans Reunionnaises', members: '28k membres' },
   ]
 
@@ -17,7 +17,7 @@ export function ProofSection() {
         {/* Divider */}
         <div className="flex items-center gap-3 mb-8">
           <div className="flex-1 h-px bg-gray-100" />
-          <span className="text-brand-muted text-sm">Communaute beaute 974</span>
+          <span className="text-brand-muted text-sm">Communauté beauté La Réunion</span>
           <div className="flex-1 h-px bg-gray-100" />
         </div>
 

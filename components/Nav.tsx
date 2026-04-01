@@ -1,17 +1,15 @@
-import Image from 'next/image'
-
 export function Nav() {
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-brand-bg/95 backdrop-blur-sm border-b border-brand-primary/10">
-      <div className="max-w-5xl mx-auto px-4 h-14 flex items-center justify-between">
-        <Image
-          src="/logo.png"
-          alt="KRÉOL GLOW"
-          width={120}
-          height={40}
-          className="h-9 w-auto object-contain"
-          priority
-        />
+    <nav
+      className="sticky top-0 z-50 border-b border-brand-primary/10"
+      style={{ backgroundColor: '#EDE4D3' }}
+    >
+      <div className="max-w-5xl mx-auto px-4 h-[120px] flex items-center justify-between">
+        {/* Logo full size */}
+        <a href="/" aria-label="Kréol Glow — accueil" className="hover:opacity-80 transition-opacity">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src="/logo.png" alt="Kréol Glow" style={{ height: '118px', width: 'auto', display: 'block' }} />
+        </a>
 
         {/* Instagram link */}
         <a
